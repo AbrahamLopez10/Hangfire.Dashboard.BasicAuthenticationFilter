@@ -6,7 +6,7 @@ Please note that contrary to the original package this doesn't intend to support
 
 ### Usage
 
-Just add the following to the `Configure()` method in your `Startup` class, be sure to change the `Username` and `Password` to the desired values:
+Just copy to your project the `BasicAuthorizationFilter` file provided in this repository and add the following code to the `Configure()` method in your project's `Startup` class (be sure to change the `Username` and `Password` to the desired values):
 
 ```cs
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
@@ -24,7 +24,7 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions
 });
 ```
 
-It's recommended that you don't put your password in plain text in your codebase, so it's more advisable to store the credentials in your per-environment `appsettings.{ENVIRONMENT}.json` file and reference them through the injected `IConfiguration Configuration` instead:
+**IMPORTANT:** It's strongly recommended that you don't put your password in plain text in your codebase, but store the credentials in your environment-specific `appsettings.{ENVIRONMENT}.json` file and reference them through the injected `IConfiguration Configuration` instead (or use a proper secrets manager like Azure Key Vault or AWS Secrets Manager):
 
 ```cs
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
@@ -42,7 +42,7 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions
 });
 ```
 
-Alternatively, if for some reason you can't or don't want to use the recommended `Configuration` approach, you can also store the password as a SHA-1 byte hash for reducing the inherent risk of storing your password in plain text in your codebase and version control history:
+Alternatively, if for some reason you can't or don't want to use the approach recommended above, you can specify the password as a SHA-1 byte hash instead for reducing the inherent risk of storing your password in plain text in your codebase and version control history:
 
 ```cs
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
@@ -64,5 +64,5 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions
 });
 ```
 
-For help with generating the byte hash for your chosen password, please refer to this:
+For help with generating the byte hash for your chosen password, please refer to:
 https://github.com/HangfireIO/Hangfire.Dashboard.Authorization#how-to-generate-password-hash
