@@ -2,7 +2,7 @@
 
 This is a simpler replacement for the [`Hangfire.Dashboard.Authorization`](https://github.com/HangfireIO/Hangfire.Dashboard.Authorization) Nuget package which at its 2.1 version is not compatible with Hangfire Core 1.7. It's based on the [`BasicAuthAuthorizationFilter`](https://github.com/HangfireIO/Hangfire.Dashboard.Authorization/blob/master/src/Hangfire.Dashboard.Authorization/BasicAuthAuthorizationFilter.cs) class provided in that same package.
 
-Please note that contrary to the original package this doesn't intend to support HTTPS enforcement/redirection, but just basic HTTP authentication. Hopefully the `Hangfire.Dashboard.Authorization` will eventually be upgraded to be compatible with the latest Hangfire Core version so it can be used again instead.
+Please note that contrary to the original package this doesn't intend to support HTTPS enforcement/redirection, but just basic HTTP authentication. Also, note that this replacement uses `HttpContext` rather than `OwinContext` as it was created primarily for compatibility with .NET Core. Hopefully the `Hangfire.Dashboard.Authorization` will eventually be upgraded to be compatible with the latest Hangfire Core version so it can be used again instead.
 
 ### Usage
 
