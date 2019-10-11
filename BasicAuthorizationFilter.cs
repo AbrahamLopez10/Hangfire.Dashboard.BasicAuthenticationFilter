@@ -8,13 +8,13 @@ using System.Security.Cryptography;
 using System.Collections;
 using Microsoft.AspNetCore.Http;
 
-namespace Hangfire.Dashboard.BasicAuthorizationFilter
+namespace Hangfire.Dashboard
 {
-    public class BasicAuthorizationFilter : IDashboardAuthorizationFilter
+    public class BasicAuthenticationFilter : IDashboardAuthorizationFilter
     {
-        public IEnumerable<BasicAuthAuthorizationUser> Users { get; }
+        public IEnumerable<UserCredentials> Users { get; }
 
-        public BasicAuthorizationFilter(IEnumerable<BasicAuthAuthorizationUser> users)
+        public BasicAuthenticationFilter(IEnumerable<UserCredentials> users)
         {
             Users = users;
         }
@@ -61,7 +61,7 @@ namespace Hangfire.Dashboard.BasicAuthorizationFilter
         }
     }
 
-    public class BasicAuthAuthorizationUser
+    public class UserCredentials
     {
         public string Username { get; set; }
 
