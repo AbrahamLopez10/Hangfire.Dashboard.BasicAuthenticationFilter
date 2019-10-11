@@ -12,9 +12,9 @@ Just copy to your project the `BasicAuthorizationFilter` file provided in this r
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
 {
     Authorization = new[] {
-        new BasicAuthorizationFilter(new[]
+        new BasicAuthenticationFilter(new[]
         {
-            new BasicAuthAuthorizationUser
+            new UserCredentials
             {
                 Username = "SET YOUR USERNAME HERE",
                 Password = "SET YOUR PASSWORD HERE"
@@ -30,9 +30,9 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
 {
     Authorization = new[] {
-        new BasicAuthorizationFilter(new[]
+        new BasicAuthenticationFilter(new[]
         {
-            new BasicAuthAuthorizationUser
+            new UserCredentials
             {
                 Username = Configuration["Hangfire:Dashboard:Authentication:Username"],
                 Password = Configuration["Hangfire:Dashboard:Authentication:Password"]
@@ -48,9 +48,9 @@ Alternatively, if for some reason you can't or don't want to use the approach re
 app.UseHangfireDashboard("/hangfire", new DashboardOptions
 {
     Authorization = new[] {
-        new BasicAuthorizationFilter(new[]
+        new BasicAuthenticationFilter(new[]
         {
-            new BasicAuthAuthorizationUser
+            new UserCredentials
             {
                 Username = "SET YOUR USERNAME HERE",
                 PasswordSha1Hash = new byte[]{ 0xa9,
